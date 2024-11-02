@@ -1,7 +1,9 @@
-
 SETLOCAL EnableDelayedExpansion
 @echo off
 cls
+
+:: Ensure the build directory exists
+if not exist "build" mkdir build
 del build\*.o
 
 SET "debug="
@@ -9,18 +11,16 @@ SET "cwDWARF="
 if "%1" equ "-d" SET "debug=-debug -map=^"%appdata%\Dolphin Emulator\Maps\RMCP01.map^" -readelf=^"C:\MinGW\bin\readelf.exe^""
 if "%1" equ "-d" SET "cwDWARF=-g"
 
-
 :: Destination (change as necessary)
 SET "SOURCE=RetroRewind6"
 SET "RIIVO=%appdata%\Dolphin Emulator\Load\Riivolution\RetroRewind6"
 SET "ENGINE=..\Pulsar\KamekInclude"
 echo %ENGINE%
 
-
 :: CPP compilation settings
-SET CC="../Pulsar/cw/mwcceppc.exe"
+SET CC="C:/CodeWarriors/Command_Line_Tools/mwcceppc.exe"
 SET CFLAGS=-I- -i "../Pulsar/KamekInclude" -i "../Pulsar/GameSource" -i "../Pulsar/GameSource/game" -i "../Pulsar/GameSource/core" -i "../Pulsar/PulsarEngine" -i "../Pulsar" -i code^
-  -opt all -inline auto -enum int -proc gekko -fp hard -sdata 0 -sdata2 0 -maxerrors 1 -func_align 4 %cwDWARF%
+  -opt all -inline auto -enum int -fp hard -sdata 0 -sdata2 0 -maxerrors 1 -func_align 4 %cwDWARF%
 SET DEFINE=
 
 :: CPP Sources
