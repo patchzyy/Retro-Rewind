@@ -14,18 +14,20 @@ if "%1" equ "-d" SET "cwDWARF=-g"
 :: Destination (change as necessary)
 SET "SOURCE=RetroRewind6"
 SET "RIIVO=%appdata%\Dolphin Emulator\Load\Riivolution\RetroRewind6"
-SET "ENGINE=..\Pulsar\KamekInclude"
+SET "ENGINE=G:\Coding\MarioKart\RR\Pulsar\KamekInclude"
 echo %ENGINE%
 
 :: CPP compilation settings
 SET CC="C:/CodeWarriors/Command_Line_Tools/mwcceppc.exe"
-SET CFLAGS=-I- -i "../Pulsar/KamekInclude" -i "../Pulsar/GameSource" -i "../Pulsar/GameSource/game" -i "../Pulsar/GameSource/core" -i "../Pulsar/PulsarEngine" -i "../Pulsar" -i code^
+SET CFLAGS=-I- -i "G:\Coding\MarioKart\RR\Pulsar\KamekInclude" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\include" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\game" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\core" -i "G:\Coding\MarioKart\RR\Pulsar\PulsarEngine" -i "G:\Coding\MarioKart\RR\Pulsar" -i code ^
   -opt all -inline auto -enum int -fp hard -sdata 0 -sdata2 0 -maxerrors 1 -func_align 4 %cwDWARF%
+
+
 SET DEFINE=
 
 :: CPP Sources
 SET CPPFILES=
-for /R "../Pulsar/PulsarEngine" %%f in (*.cpp) do SET "CPPFILES=%%f !CPPFILES!"
+for /R "../../Pulsar/PulsarEngine" %%f in (*.cpp) do SET "CPPFILES=%%f !CPPFILES!"
 for /R code %%f in (*.cpp) do SET "CPPFILES=%%f !CPPFILES!"
 
 :: Compile CPP
@@ -40,7 +42,7 @@ FOR %%H IN (%CPPFILES%) DO (
 
 :: Link
 echo Linking... %time%
-"../Pulsar/KamekLinker/kamek" "build/kamek.o" %OBJECTS% %debug% -dynamic -externals="../Pulsar/GameSource/symbols.txt" -versions="../Pulsar/GameSource/versions.txt" -output-combined=build\Code.pul
+"../../Pulsar/KamekLinker/kamek" "build/kamek.o" %OBJECTS% %debug% -dynamic -externals="../../Pulsar/GameSource/symbols.txt" -versions="../../Pulsar/GameSource/versions.txt" -output-combined=build\Code.pul
 
 if %ErrorLevel% equ 0 (
     xcopy /Y build\*.pul "%RIIVO%\Binaries" >nul

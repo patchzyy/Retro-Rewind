@@ -10,7 +10,8 @@ namespace Pulsar {
 namespace Network {
 //Region Patch (Leseratte)
 static void PatchLoginRegion() {
-    u32 region = Info::GetWiimmfiRegion();
+    const Pulsar::Info& infoInstance = Pulsar::System::sInstance->GetInfo();
+    u32 region = infoInstance.GetWiimmfiRegion();
     WWFC_CUSTOM_REGION = region;
     char path[0x9];
     snprintf(path, 0x9, "%08d", region + 100000);
@@ -20,11 +21,15 @@ static void PatchLoginRegion() {
 }
 BootHook LoginRegion(PatchLoginRegion, 2);
 
+int PatchRegion(char* path, u32 len, const char* fmt, const char* mode) {
+    const Info& info = System::sInstance->GetInfo();
+    return snprintf(path, len, fmt, mode, info.GetWiimmfiRegion());
+}
 
-PatchRegion(0x8065920c);
-PatchRegion(0x80659260);
-PatchRegion(0x80659724);
-PatchRegion(0x80659778);
+kmCall(0x8065921c, PatchRegion);
+kmCall(0x80659270, PatchRegion);
+kmCall(0x80659734, PatchRegion);
+kmCall(0x80659788, PatchRegion);
 
 
 //kmWrite32(0x8065a038, 0x7C050378);
@@ -32,9 +37,10 @@ PatchRegion(0x80659778);
 static int GetFriendsSearchType(int curType, u32 regionId) {
     register u8 friendRegionId;
     asm(mr friendRegionId, r0;);
-    u8 region = Info::GetWiimmfiRegion();
-    if(region != friendRegionId) return curType;
-    else if(curType == 7) return 6;
+    const Pulsar::Info& infoInstance = Pulsar::System::sInstance->GetInfo();
+    u8 region = infoInstance.GetWiimmfiRegion();  // Call GetWiimmfiRegion on the retrieved Info reference
+    if (region != friendRegionId) return curType;
+    else if (curType == 7) return 6;
     else return 9;
 }
 kmBranch(0x8065a03c, GetFriendsSearchType);
@@ -43,7 +49,8 @@ kmBranch(0x8065a088, GetFriendsSearchType);
 
 
 static u32 PatchRKNetControllerRegion() {
-    return Info::GetWiimmfiRegion();
+    const Pulsar::Info& infoInstance = Pulsar::System::sInstance->GetInfo();
+    return infoInstance.GetWiimmfiRegion();  // Call GetWiimmfiRegion on the retrieved Info reference
 }
 kmCall(0x80653640, PatchRKNetControllerRegion);
 kmWrite32(0x80653644, 0x7c651b78);

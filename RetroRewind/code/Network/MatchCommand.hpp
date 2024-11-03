@@ -1,7 +1,8 @@
 #ifndef _PUL_MATCH_COMMAND_
 #define _PUL_MATCH_COMMAND_
-#include <core/rvl/DWC/MatchCommand.hpp>
+#include <G:\Coding\MarioKart\RR\Retro-Rewind\RetroRewind\code\Network\MatchCommand.hpp>
 #include <core/rvl/ipc/ipc.hpp>
+#include <core/rvl/DWC/DWC.hpp>
 
 namespace Pulsar {
 namespace Network {

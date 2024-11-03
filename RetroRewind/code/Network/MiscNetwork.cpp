@@ -3,8 +3,8 @@
 #include <MarioKartWii/RKNet/Select.hpp>
 #include <MarioKartWii/System/random.hpp>
 #include <MarioKartWii/Race/RaceData.hpp>
-#include <MarioKartWii/UI/SectionMgr/SectionMgr.hpp>
-#include <Settings/Settings.hpp>
+#include <MarioKartWii/UI/Section/SectionMgr.hpp>
+#include <G:/Coding/MarioKart/RR/Pulsar/PulsarEngine/Settings/Settings.hpp>
 #include <SlotExpansion/Network/PulSELECT.hpp>
 #include <Info.hpp>
 #include <UI/TeamSelect/TeamSelect.hpp>
