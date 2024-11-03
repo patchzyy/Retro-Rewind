@@ -1,5 +1,6 @@
 #include <RetroRewind.hpp>
-#include <MarioKartWii/Archive/ArchiveRoot.hpp>
+#include <MarioKartWii/Archive/ArchiveMgr.hpp>
+#include <MarioKartWii/Archive/ArchiveHolder.hpp>
 
 namespace RetroRewind {
 void *GetCustomKartParam(ArchiveRoot *archive, ArchiveSource type, const char *name, u32 *length){

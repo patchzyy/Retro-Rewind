@@ -3,11 +3,15 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "G:/Coding/MarioKart/RR/Pulsar/KamekInclude",
-                "G:\\Coding\\MarioKart\\RR\\Pulsar\\GameSource",
-                "G:\\Coding\\MarioKart\\RR\\Pulsar\\PulsarEngine"
-            ],
+                    "${workspaceFolder}/**",
+                    "G:/Coding/MarioKart/RR/Pulsar/KamekInclude",
+                    "G:/Coding/MarioKart/RR/Pulsar/GameSource",
+                    "G:/Coding/MarioKart/RR/Pulsar/GameSource/include",
+                    "G:/Coding/MarioKart/RR/Pulsar/GameSource",
+                    "G:/Coding/MarioKart/RR/Pulsar/GameSource/core",
+                    "G:/Coding/MarioKart/RR/Pulsar/PulsarEngine",
+                    "G:/Coding/MarioKart/RR/Pulsar"
+                ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",

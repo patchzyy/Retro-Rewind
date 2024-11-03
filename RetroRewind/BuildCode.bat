@@ -19,7 +19,7 @@ echo %ENGINE%
 
 :: CPP compilation settings
 SET CC="C:/CodeWarriors/Command_Line_Tools/mwcceppc.exe"
-SET CFLAGS=-I- -i "G:\Coding\MarioKart\RR\Pulsar\KamekInclude" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\include" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\game" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\core" -i "G:\Coding\MarioKart\RR\Pulsar\PulsarEngine" -i "G:\Coding\MarioKart\RR\Pulsar" -i code ^
+SET CFLAGS=-I- -i "G:\Coding\MarioKart\RR\Pulsar\KamekInclude" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\include" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource" -i "G:\Coding\MarioKart\RR\Pulsar\GameSource\core" -i "G:\Coding\MarioKart\RR\Pulsar\PulsarEngine" -i "G:\Coding\MarioKart\RR\Pulsar" -i code ^
   -opt all -inline auto -enum int -fp hard -sdata 0 -sdata2 0 -maxerrors 1 -func_align 4 %cwDWARF%
 
 
